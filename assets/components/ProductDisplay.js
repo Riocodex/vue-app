@@ -41,13 +41,14 @@ app.component('product-display',{
        :style="{ backgroundColor: variant.color}">
       </div>
 
-       <button 
-       class="button"
-       :class="{disabledButton: !inStock}" 
-       :disabled="!inStock"
-       @click="addToCart">
-       Add to cart
-      </button>
+      <button 
+  class="button"
+  :class="{disabledButton: !inStock}" 
+  :disabled="!inStock"
+  @click="addToCart">
+  Add to cart
+</button>
+
        
       </div>
     </div>
@@ -65,8 +66,8 @@ app.component('product-display',{
 },
 methods: {
     addToCart() {
-        this.cart += 1;
-    },
+        this.$emit('add-to-cart',this.variants[this.selectedVariant].id); 
+      },
     updateVariant(index) {
         this.selectedVariant = index;
     },
