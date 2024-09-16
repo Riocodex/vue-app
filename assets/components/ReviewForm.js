@@ -3,8 +3,8 @@ app.component('review-form',{
         `<form class="review-form">
             <h3>Leave a review</h3>
             <label for="name"<Name: </label>
-        <input id ="name">
-        <textarea id="review"></textarea>
+        <input id ="name" v-model="name">
+        <textarea id="review" v-model="review"></textarea>
 
         <select id="rating">
             <option>5</option>
@@ -16,5 +16,12 @@ app.component('review-form',{
 
         <input class="button" type="submit" value="Submit">
         </form>
-        `
+        `,
+        data(){
+            return{
+                name:'',
+                review:'',
+                rating: null
+            }
+        }
 })
