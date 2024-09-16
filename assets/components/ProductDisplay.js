@@ -1,4 +1,14 @@
 app.component('product-display',{
+    props:{
+        premium: {
+            type: Boolean,
+            required: true,
+        },
+        details:{
+            type: Array,
+            required: true,
+        }
+    },
     template:
     ` <div class="product-display">
     <div class="product-container">
@@ -14,10 +24,12 @@ app.component('product-display',{
        <h1> {{ brand + ' ' + product}}</h1>
        <p v-if="inStock">In Stock</p>
        <p v-else>Out of Stock</p>
+
+       <p>Shipping: {{ shipping }}
        <ul>
-        <li v-for="detail in details">
-          {{detail}}
-        </li>
+       <li v-for="(detail, index) in details" :key="index">
+       {{ detail }}
+     </li>
        </ul>
 
 
@@ -45,7 +57,6 @@ app.component('product-display',{
         product: 'Socks',
         brand: 'You Sock!',
         selectedVariant: 0, // Tracks the current variant
-        details: ['50% cotton', '30% wool', '20% polyester'],
         variants: [
             { id: 2234, color: 'green', image: './assets/images/socks_green.jpg', quantity: 50 ,onSale: true},
             { id: 2235, color: 'blue', image: './assets/images/socks_blue.jpg', quantity: 10 ,onSale: false},
@@ -70,5 +81,12 @@ computed: {
     inStock() {
         return this.variants[this.selectedVariant].quantity > 0;
     },
+    shipping(){
+        if(this.premium){
+            return'Free'
+        }
+        return 2.99
+    },
+  
 }
 })
