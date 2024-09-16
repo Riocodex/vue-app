@@ -6,26 +6,32 @@
     <!-- Import Styles -->
     <link rel="stylesheet" href="./assets/styles.css" />
     <!-- Import Vue.js -->
-    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>  </head>
+    <script src="https://unpkg.com/vue@3.0.11/dist/vue.global.js"></script>
+  </head>
   <body>
     <div id="app">
       <div class="nav-bar"></div>
-      <div class="cart">Cart({{ cart.length }})</div>
-      <product-display :premium="premium" :details="details" @add-to-cart="updateCart"></product-display>
 
-     
+      <div class="cart">
+        <p>Cart({{ cart.length }})</p>
+      </div>
+      <product-display
+        :premium="premium"
+        @add-to-cart="updateCart"
+      ></product-display>
     </div>
 
     <!-- Import App -->
     <script src="./main.js"></script>
-    <!-- Mount App -->
 
-    <!-- import component -->
+    <!-- Import Components -->
     <script src="./assets/components/ProductDisplay.js"></script>
     <script src="./assets/components/ReviewForm.js"></script>
+    <script src="./assets/components/ReviewList.js"></script>
 
+    <!-- Mount App -->
     <script>
-      const mountedApp = app.mount('#app')
+      app.mount('#app')
     </script>
   </body>
 </html>
